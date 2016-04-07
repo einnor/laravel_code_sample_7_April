@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 //Blog Routes
-Route::get('blogs', 'BlogsController@index');
-
-Route::get('blogs/{id}', 'BlogsController@show');
+//Route::get('blogs', 'BlogsController@index');
+//Route::get('blogs', ['as' => 'blogs.index', 'uses' => 'BlogsController@index']);
+//Route::get('blogs/{id}', 'BlogsController@show');
+Route::resource('blogs', 'BlogsController');
