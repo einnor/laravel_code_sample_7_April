@@ -2,7 +2,7 @@
   <nav>
     <ul class="nav nav-pills pull-right">
       <li role="presentation" class=""><a href="{{ route('blogs.index') }}">Blogs</a></li>
-      <li role="presentation"><a href="#">About</a></li>
+      <li role="presentation"><a href="{{ route('blogs.create') }}">Create</a></li>
       <li role="presentation"><a href="#">Contact</a></li>
     </ul>
   </nav>

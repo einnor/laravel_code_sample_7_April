@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
+use App\Http\Requests\BlogRequest;
 use App\Blog;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 class BlogsController extends Controller
 {
     public function index(){
-      $blogs = Blog::all();
+      $blogs = Blog::latest()->get();
       return view('blogs.index')->with('blogs', $blogs);
     }
 
     public function create(){
-      //
+      return view('blogs.create');
     }
 
-    public function store(Request $request){
-      //
+    public function store(BlogRequest $request){
+      $input = Request::all();
+      Blog::create($input);
+      return redirect('blogs');
     }
 
     public function show($id){
