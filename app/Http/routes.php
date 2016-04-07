@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Blog Routes
+Route::get('blogs', 'BlogsController@index');
+
+Route::get('blogs/{id}', 'BlogsController@show');
