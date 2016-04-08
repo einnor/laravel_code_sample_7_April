@@ -7,6 +7,8 @@
     <form method="POST" action="/auth/login">
         {!! csrf_field() !!}
 
+        @include('errors.formerrors')
+
         <div class="form-group">
             Email
             <input type="email" class="form-control" name="email" value="{{ old('email') }}">

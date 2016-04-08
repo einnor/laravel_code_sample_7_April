@@ -7,6 +7,8 @@
 <form method="POST" action="/auth/register">
     {!! csrf_field() !!}
 
+    @include('errors.formerrors')
+
     <div class="form-group">
         Name
         <input type="text" class="form-control" name="name" value="{{ old('name') }}">
