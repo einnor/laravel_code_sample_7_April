@@ -8,6 +8,12 @@ use App\Blog;
 use App\Http\Controllers\Controller;
 class BlogsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => ['create', 'store','update','destroy', 'edit']]);
+    }
+
+
     public function index(){
       $blogs = Blog::latest()->get();
       return view('blogs.index')->with('blogs', $blogs);
@@ -29,11 +35,14 @@ class BlogsController extends Controller
     }
 
     public function edit($id){
-      //
+      $blog = Blog::findOrFail($id);
+      return view('blogs.edit')->with('blog', $blog);
     }
 
-    public function update(Request $request, $id){
-      //
+    public function update(BlogRequest $request, $id){
+      $blog = Blog::findOrFail($id);
+      $blog->update($request->all());
+      return redirect('blogs');
     }
 
     public function destroy($id){
